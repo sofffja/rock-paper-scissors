@@ -1,0 +1,66 @@
+* {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #eaeaea;
+  background-color: #696666;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+}
+
+body {
+  margin: 0 1rem;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.player-buttons,
+.scores {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.player-buttons button {
+  flex: 1;
+  padding: 1rem;
+  text-transform: uppercase;
+  background-color: #171717;
+  border: none;
+}
+
+button:hover {
+  background-color: #e1ff00;
+  color: #171717;
+}
+
+.scores div {
+  background-color: #171717;
+  padding: 1rem;
+  flex: 1 0 0;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.scores div p {
+  background-color: inherit;
+}
+
+.results {
+  background-color: #171717;
+  padding: 1rem;
+}
+
+.player, 
+.computer {
+  color: #e1ff00;
+}

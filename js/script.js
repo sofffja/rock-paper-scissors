@@ -5,6 +5,8 @@ let playerSelection;
 
 let playerButtons = document.querySelector('.player-buttons')
 let resultsDiv = document.querySelector('.results')
+let playerScoreP = document.querySelector('.player')
+let computerScoreP = document.querySelector('.computer')
 
 playerButtons.addEventListener('click', (event) => {
 	playerSelection = event.target.id;
@@ -17,6 +19,7 @@ playerButtons.addEventListener('click', (event) => {
 
 
 function playRound(playerSelection, computerSelection) {
+	resultsDiv.style.backgroundColor = '#171717'
 	playerSelection = capitalize(playerSelection);
 
 	if (playerSelection === computerSelection) {
@@ -36,25 +39,30 @@ function game(playerSelection) {
 	let roundWinner;
 
 	let computerSelection = getComputerChoice();
+	playerSelection = capitalize(playerSelection);
+	
 	roundWinner = playRound(playerSelection, computerSelection);
 
 	switch (roundWinner) {
 		case 'ties':
-			resultsDiv.textContent = `Ties! ${playerSelection} equals ${computerSelection.toLowerCase()}. YOU ${playerScore} - MACHINE ${computerScore}`;
+			resultsDiv.textContent = `Ties! ${playerSelection} equals ${computerSelection.toLowerCase()}`;
 		break;
 
 		case 'player':
 			playerScore++;
-			resultsDiv.textContent = `You win! ${playerSelection} beats ${computerSelection.toLowerCase()}. YOU ${playerScore} - MACHINE ${computerScore}`;
+			resultsDiv.textContent = `You win! ${playerSelection} beats ${computerSelection.toLowerCase()}`;
 			roundCounter++;
 		break;
 
 		case 'computer':
 			computerScore++;
-			resultsDiv.textContent = `You loose! ${computerSelection} beats ${playerSelection.toLowerCase()}. YOU ${playerScore} - MACHINE ${computerScore}`;
+			resultsDiv.textContent = `You loose! ${computerSelection} beats ${playerSelection.toLowerCase()}`;
 			roundCounter++;
 		break;
 	};
+
+	playerScoreP.textContent = playerScore;
+	computerScoreP.textContent = computerScore;
 };
 
 function endGame() {
@@ -62,8 +70,10 @@ function endGame() {
 
 	if (playerScore > computerScore) {
 		result = 'YOU WIN THE GAME';
+		resultsDiv.style.backgroundColor = 'blue';
 	} else {
 		result = 'MACHINE WINS THE GAME';
+		resultsDiv.style.backgroundColor = 'red';
 	};
 
 	roundCounter = 0;
