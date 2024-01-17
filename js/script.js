@@ -3,10 +3,11 @@ let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
 
-let playerButtons = document.querySelector('.player-buttons');
-let resultsDiv = document.querySelector('.results');
-let playerScoreP = document.querySelector('.player');
-let computerScoreP = document.querySelector('.computer');
+const playerButtons = document.querySelector('.player-buttons');
+const resultsDiv = document.querySelector('.results');
+const playerScoreP = document.querySelector('.player');
+const computerScoreP = document.querySelector('.computer');
+const winnerDiv = document.querySelector('.winner');
 
 playerButtons.addEventListener('click', (event) => {
 	playerSelection = event.target.id;
@@ -16,7 +17,11 @@ playerButtons.addEventListener('click', (event) => {
 
 
 function playRound(playerSelection, computerSelection) {
+	if (winnerDiv.textContent !== "LET'S PLAY") {
+		winnerDiv.textContent = "LET'S PLAY";
+		winnerDiv.style.backgroundColor = '#171717';
 
+	}
 	playerSelection = capitalize(playerSelection);
 
 	if (playerSelection === computerSelection) {
@@ -67,21 +72,16 @@ function game(playerSelection) {
 
 function endGame() {
 	let result;
-
 	if (playerScore > computerScore) {
 		result = 'YOU WIN THE GAME';
 
-		const newDiv = document.createElement('div');
-		newDiv.textContent = result;
-		resultsDiv.appendChild(newDiv);
-		newDiv.style.backgroundColor = 'blue';
+		winnerDiv.textContent = result;
+		winnerDiv.style.backgroundColor = 'blue';
 	} else {
 		result = 'MACHINE WINS THE GAME';
 
-		const newDiv = document.createElement('div');
-		newDiv.textContent = result;
-		resultsDiv.appendChild(newDiv);
-		newDiv.style.backgroundColor = 'red';
+		winnerDiv.textContent = result;
+		winnerDiv.style.backgroundColor = 'red';
 	};
 
 	roundCounter = 0;
